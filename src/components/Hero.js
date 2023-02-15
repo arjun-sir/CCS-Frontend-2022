@@ -4,14 +4,13 @@ import L_Piece from '../../public/assets/piece_l.svg';
 import R_Piece from '../../public/assets/piece_r.svg';
 import M_Piece from '../../public/assets/piece_m.svg';
 import Link from 'next/link';
-// import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import Countdown from 'react-countdown';
 import { useSpring, animated } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
 
 const Hero = ({ loggedIn }) => {
     const endDate = process.env.NEXT_PUBLIC_END_DATE;
-
     const leftPos = useSpring({ x: 0, y: 0 });
     const RightPos = useSpring({ x: 0, y: 0 });
 
@@ -29,15 +28,15 @@ const Hero = ({ loggedIn }) => {
         if (completed) {
             return (
                 <>
-                    <p className="font-extralight">
+                    {/* <p className="font-extralight">
                         <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-green-500 inline-block rounded-full mr-2" />
                         <span className="font-bold">Results</span> are live
-                    </p>
-                    {/* <div className="ml-4 md:ml-6">
+                    </p> */}
+                    <div className="ml-4 md:ml-6">
                         <p className="font-extralight whitespace-nowrap">
                             <span className="font-bold text-gray-500">Round 1 completed!</span>
                         </p>
-                    </div> */}
+                    </div>
                 </>
             );
         } else {
@@ -123,12 +122,12 @@ const Hero = ({ loggedIn }) => {
                             <Countdown date={new Date(endDate)} renderer={renderer} zeroPadTime={3} />
                         </div>
                         <div>
-                            <Link href="/results" passHref shallow={true}>
+                            {/* <Link href="/results" passHref shallow={true}>
                                 <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                     RESULTS
                                 </button>
-                            </Link>
-                            {/* {loggedIn ? (
+                            </Link> */}
+                            {loggedIn ? (
                                 <>
                                     {new Date() > new Date(endDate) ? (
                                         <Link href="/user/tasks" passHref>
@@ -150,7 +149,7 @@ const Hero = ({ loggedIn }) => {
                                         LOGIN
                                     </button>
                                 </Link>
-                            )} */}
+                            )}
                         </div>
                     </div>
                 </div>

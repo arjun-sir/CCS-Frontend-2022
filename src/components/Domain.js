@@ -75,7 +75,7 @@ function Domain({ details, endTime }) {
                         >
                             {details.description}
                         </p>
-                        {new Date() > new Date(endDate) ?
+                        {new Date() > new Date(endDate) ? (
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                 <Link href={`/user/tasks`} shallow={true}>
                                     <a
@@ -91,45 +91,26 @@ function Domain({ details, endTime }) {
                                     </a>
                                 </Link>
                             </div>
-                            :
-                            endTime ? (
-                                endTime.completed ? (
-                                    <>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                            <a
-                                                style={{
-                                                    padding: '5px 10px',
-                                                    color: 'gray',
-                                                    fontSize: '0.8rem',
-                                                    backgroundColor: '#ECE0D8',
-                                                    borderRadius: 5,
-                                                }}
-                                            >
-                                                ATTEMPTED
-                                            </a>
-                                        </div>
-                                    </>
-                                ) : (
+                        ) : endTime ? (
+                            endTime.completed ? (
+                                <>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                        <Link href={`/quiz/${details.name}`} shallow={true}>
-                                            <a
-                                                style={{
-                                                    padding: '5px 10px',
-                                                    color: 'black',
-                                                    fontSize: '0.8rem',
-                                                    backgroundColor: '#ECE0D8',
-                                                    borderRadius: 5,
-                                                }}
-                                            >
-                                                RESUME
-                                            </a>
-                                        </Link>
-                                        <ClockIcon />
+                                        <a
+                                            style={{
+                                                padding: '5px 10px',
+                                                color: 'gray',
+                                                fontSize: '0.8rem',
+                                                backgroundColor: '#ECE0D8',
+                                                borderRadius: 5,
+                                            }}
+                                        >
+                                            ATTEMPTED
+                                        </a>
                                     </div>
-                                )
+                                </>
                             ) : (
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                    <Link href={`/quiz/${details.name}`} shallow={true} passHref>
+                                    <Link href={`/quiz/${details.name}`} shallow={true}>
                                         <a
                                             style={{
                                                 padding: '5px 10px',
@@ -137,19 +118,34 @@ function Domain({ details, endTime }) {
                                                 fontSize: '0.8rem',
                                                 backgroundColor: '#ECE0D8',
                                                 borderRadius: 5,
-                                                whiteSpace: 'nowrap',
                                             }}
                                         >
-                                            TAKE TEST
+                                            RESUME
                                         </a>
                                     </Link>
-                                    <p>30:00</p>
                                     <ClockIcon />
                                 </div>
                             )
-
-                        }
-
+                        ) : (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                <Link href={`/quiz/${details.name}`} shallow={true} passHref>
+                                    <a
+                                        style={{
+                                            padding: '5px 10px',
+                                            color: 'black',
+                                            fontSize: '0.8rem',
+                                            backgroundColor: '#ECE0D8',
+                                            borderRadius: 5,
+                                            whiteSpace: 'nowrap',
+                                        }}
+                                    >
+                                        TAKE TEST
+                                    </a>
+                                </Link>
+                                <p>30:00</p>
+                                <ClockIcon />
+                            </div>
+                        )}
                     </div>
                 </div>
             </Modal>

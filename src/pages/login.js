@@ -9,7 +9,7 @@ import L_Piece from '../../public/assets/auth_l.svg';
 import R_Piece from '../../public/assets/auth_r.svg';
 import ForgotPass from '../components/ForgotPass';
 import LoginFormSchema from '../lib/validation/loginFormSchema';
-import { useDrag, } from '@use-gesture/react';
+import { useDrag } from '@use-gesture/react';
 import { useSpring, animated } from '@react-spring/web';
 
 const Login = ({ query }) => {
@@ -21,12 +21,12 @@ const Login = ({ query }) => {
     const bindLeftPos = useDrag((params) => {
         leftPos.x.set(params.offset[0]);
         leftPos.y.set(params.offset[1]);
-    })
+    });
 
     const bindRightPos = useDrag((params) => {
         RightPos.x.set(params.offset[0]);
         RightPos.y.set(params.offset[1]);
-    })
+    });
 
     useEffect(() => {
         if (query) {
@@ -69,7 +69,7 @@ const Login = ({ query }) => {
     async function loginHandler(e) {
         e.preventDefault();
 
-        const data = { usernameOrEmail: usernameOrEmail.trim(), password, };
+        const data = { usernameOrEmail: usernameOrEmail.trim(), password };
 
         const { error } = LoginFormSchema.validate(data);
 
@@ -130,14 +130,16 @@ const Login = ({ query }) => {
                     }}
                     className="absolute hidden md:block left-2 lg:left-16 bottom-14 md:bottom-10 cursor-pointer z-50"
                 >
-
                     <L_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
-                <animated.div className="absolute hidden md:block right-2 lg:right-16 top-10 cursor-pointer z-50" {...bindRightPos()}
+                <animated.div
+                    className="absolute hidden md:block right-2 lg:right-16 top-10 cursor-pointer z-50"
+                    {...bindRightPos()}
                     style={{
                         x: RightPos.x,
                         y: RightPos.y,
-                    }}>
+                    }}
+                >
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
                 {fPassState ? (
@@ -166,7 +168,7 @@ const Login = ({ query }) => {
                         </button>
                     </form>
                 )}
-                {(new Date()) < (new Date(endDate)) ?
+                {new Date() < new Date(endDate) ? (
                     <div>
                         <p>
                             {"Don't have an account yet? "}
@@ -174,7 +176,8 @@ const Login = ({ query }) => {
                                 <a className="underline">Signup</a>
                             </Link>
                         </p>
-                    </div> : null}
+                    </div>
+                ) : null}
             </div>
         </>
     );

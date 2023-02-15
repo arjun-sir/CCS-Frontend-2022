@@ -174,9 +174,11 @@ export const submitURL = async ({ domain, cookies, value }) => {
 export const getTasks = async ({ cookies }) => {
     try {
         const axiosInstance = getToken(cookies);
-        const res = await axiosInstance.get("/api/users/task");
+        const res = await axiosInstance.get('/api/users/task');
         console.log(res);
-        const { data: { result } } = res;
+        const {
+            data: { result },
+        } = res;
         return result;
     } catch (e) {
         console.log(e.response);
@@ -187,7 +189,7 @@ export const getTasks = async ({ cookies }) => {
 export const submitTasks = async (cookies, subdomain, task) => {
     try {
         const axiosInstance = getToken(cookies);
-        const { data } = await axiosInstance.put("/api/users/task", { subdomain, task });
+        const { data } = await axiosInstance.put('/api/users/task', { subdomain, task });
         return data;
     } catch (e) {
         console.log(e.response);
