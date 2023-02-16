@@ -9,12 +9,12 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
     const { handleSnackOpen } = useContext(ToastContext);
     const [viewMobileMenu, setViewMobileMenu] = useState(false);
     // const router = useRouter();
-    const handleTasks = () => {
-        handleSnackOpen({
-            message: 'Tasks will be made available to you on clearing round 1.',
-            variant: 'warning',
-        });
-    };
+    // const handleTasks = () => {
+    //     handleSnackOpen({
+    //         message: 'Tasks will be made available to you on clearing round 1.',
+    //         variant: 'warning',
+    //     });
+    // };
     // const handleLogout = () => {
     //     router.push('/logout');
     // };
@@ -35,12 +35,12 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                     </ScrollLink>
                 )}
                 <div className="hidden md:flex gap-10">
-                    {tasksPage ? null :
+                    {/* {tasksPage ? null :
                         <Link href="/user/tasks" passHref>
                             <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
                                 TASKS
                             </a>
-                        </Link>}
+                        </Link>} */}
                     {loggedIn ? (
                         <div className="flex items-center gap-2">
                             <Link href="/user/dashboard" passHref>
@@ -104,7 +104,7 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                 {viewMobileMenu ? (
                     <div className="w-full md:hidden" id="mobile-menu">
                         <ul className="flex flex-col mt-4 list-none items-center text-center">
-                            {tasksPage ? null : <li>
+                            {/* {tasksPage ? null : <li>
                                 <Link
                                     href="/user/tasks"
                                     onClick={handleTasks}
@@ -114,7 +114,7 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                                         TASKS
                                     </a>
                                 </Link>
-                            </li>}
+                            </li>} */}
                             <li>
                                 {loggedIn ? (
                                     <>

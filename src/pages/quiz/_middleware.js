@@ -7,6 +7,6 @@ export function middleware(req) {
     if (isEmpty(req.cookies)) {
         return NextResponse.redirect('/login');
     }
-    if (new Date() > new Date(endDate)) return NextResponse.redirect('/user/tasks');
+    if (new Date() > new Date(endDate)) return NextResponse.redirect('/user/dashboard');
     return;
 }
